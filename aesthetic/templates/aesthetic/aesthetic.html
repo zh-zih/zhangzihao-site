@@ -1,0 +1,77 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aesthetic</title>
+
+  <link rel="icon" href="{% static 'icons/blackhole.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'styles/aes.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/fonts.css' %}">
+  <!-- <script src="{% static 'js/aesthetic.js' %}" defer></script> -->
+</head>
+
+<body>
+  <!-- Fixed top nav (only for aesthetic) -->
+  <header class="topnav">
+    <nav class="topnav__inner">
+      <a class="topnav__link" href="{% url 'home' %}">Home</a>
+      <a class="topnav__link topnav__link--active" href="{% url 'aes_posts' %}">Aesthetic</a>
+      <a class="topnav__link" href="{% url 'sci_posts' %}">Scientific</a>
+    </nav>
+  </header>
+
+  <!-- Hero image occupying the whole screen -->
+  <section class="hero" id="top">
+    <img class="hero__img" src="{% static 'img/aes_hero.png' %}" alt="Hero">
+    <div class="hero__overlay">
+      <h1 class="hero__title">Discover Aesthetics</h1>
+      <p class="hero__subtitle">in Art, nature, and culture.</p>
+    </div>
+  </section>
+
+  <!-- Posts -->
+  <main class="feed">
+    {% for post in posts %}
+      <article class="
+        row
+        {% if forloop.counter0|divisibleby:2 %}
+          row--normal row--dark
+        {% else %}
+          row--reverse row--light
+        {% endif %}
+      ">
+
+        <div class="row__media">
+          {% with media=post.media.all %}
+            {% if media and media.0 %}
+              {% if media.0.type == "image" %}
+                <img src="{{ media.0.file.url }}" alt="{{ post.title }}">
+              {% elif media.0.type == "video" %}
+                <video controls>
+                  <source src="{{ media.0.file.url }}">
+                </video>
+              {% endif %}
+            {% else %}
+              <div class="media-fallback"></div>
+            {% endif %}
+          {% endwith %}
+        </div>
+
+        <div class="row__text">
+          <h2 class="row__title">{{ post.title }}</h2>
+          {% if post.post_info %}<p class="row__desc">{{ post.post_info }}</p>{% endif %}
+          {% if post.content %}<div class="row__content">{{ post.content|linebreaks }}</div>{% endif %}
+          <p class="row__meta">{{ post.display_date|date:"Y-m-d" }}</p>
+        </div>
+      </article>
+    {% empty %}
+      <section class="empty">
+        <p>No posts yet.</p>
+      </section>
+    {% endfor %}
+  </main>
+
+</body>
+</html>

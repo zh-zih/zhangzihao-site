@@ -1,0 +1,115 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+/* Fixed nav */
+.topnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(240,240,240,0.5);
+  backdrop-filter: blur(10px);
+}
+.topnav__inner {
+  display: flex;
+  gap: 18px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.topnav__link {
+  color: rgb(90,0,255);
+  text-decoration: none;
+  font-weight: 500;
+}
+.topnav__link:hover { text-decoration: underline; }
+.topnav__link--active { text-decoration: underline; }
+
+/* Hero (full viewport) */
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  padding-top: 5px; /* prevents nav overlap */
+}
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero__overlay {
+  position: absolute;
+  left: 18px;
+  bottom: 30px;
+  color: white;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.45);
+}
+.hero__title { margin: 0 0 6px 0; font-size: clamp(32px, 5vw, 64px); }
+.hero__subtitle { margin: 0; font-size: clamp(14px, 2vw, 18px); opacity: 0.95; }
+
+/* Feed rows (full width, no cards, no borders) */
+.feed { width: 100%; }
+
+.row {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+}
+.row--reverse { flex-direction: row-reverse; }
+
+/* alternating backgrounds */
+.row--dark {
+  background: #000;
+  color: #fff;
+}
+
+.row--light {
+  background: #fff;
+  color: #000;
+}
+
+.row__media, .row__text {
+  width: 50%;
+  min-height: 70vh;
+}
+
+.row__media img, .row__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.row__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px;
+}
+
+.row__title { margin: 0 0 12px 0; font-size: clamp(22px, 2.5vw, 36px); }
+.row__desc { margin: 0 0 18px 0; font-size: 18px; opacity: 0.8; }
+.row__content { font-size: 16px; line-height: 1.8; max-width: 60ch; }
+.row__meta { margin-top: 24px; opacity: 0.6; font-size: 14px; }
+
+.row__title,
+.row__desc,
+.row__content,
+.row__meta {
+  color: inherit;
+}
+
+.media-fallback { width: 100%; height: 100%; background: #eee; }
+
+.empty { padding: 120px 18px; }
+
+.footer { padding: 40px 18px; }
+.footer a { color: #111; }
+
+/* Mobile: stack */
+@media (max-width: 900px) {
+  .row, .row--reverse { flex-direction: column; }
+  .row__media, .row__text { width: 100%; min-height: auto; }
+  .row__media img, .row__media video { height: 55vh; }
+  .row__text { padding: 24px; }
+}

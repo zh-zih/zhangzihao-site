@@ -1,0 +1,19 @@
+
+@font-face {
+  font-family: 'ZCOOL XiaoWei';
+  src: url('/static/fonts/ZCOOL_XiaoWei/ZCOOLXiaoWei-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poiret One';
+  src: url('/static/fonts/Poiret_One/PoiretOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+  font-family: 'ZCOOL XiaoWei', 'Poiret One', sans-serif;
+}

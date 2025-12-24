@@ -1,0 +1,100 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(240, 240, 240);
+}
+
+.content {
+  max-width: 800px;
+  text-align: center;
+  transition: margin-top 0.5s ease;
+}
+
+.container p {
+  margin: 20px 0;
+}
+
+#first-line {
+  font-size: 1.6em;
+  font-weight: 1000;
+  color: rgb(0,0,0);
+  margin-bottom: 20px;
+  cursor: default;
+}
+
+#second-line {
+  font-size: 2.6em;
+  font-weight: 100;
+  color: rgb(100,100,100);
+  margin-top: 0;
+}
+
+/* Link Styles */
+#second-line a {
+  color: rgb(100,100,100);
+  text-decoration: underline;
+}
+
+#second-line a:hover {
+  text-decoration: none;
+  color: rgb(90,0,255);
+  font-weight: bold;
+}
+
+#second-line a:active {
+  text-decoration: none;
+  color: rgb(119, 0, 255);
+  font-weight: lighter;
+}
+
+/* Button styles */
+.button {
+  display: inline-block;
+  background: rgb(90, 0, 255);
+  color: rgb(255,255,255);
+  height: 25px;
+  width: 70px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  border: 2px solid rgb(90, 0, 255);
+  transition: background 0.2s, color 0.2s;
+}
+
+.button:hover {
+  background: rgb(255,255,255);
+  color: rgb(90, 0, 255);
+}
+
+#introduction {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin: 40px 100px;
+  text-align: center;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+  color: rgb(90, 0, 255);
+  font-size: 20px;
+  font-weight: light;
+  line-height: 1.3;
+  cursor: default;
+}
+
+/* When active, introduction fades in and expands */
+.show-intro #introduction {
+  opacity: 1;
+  max-height: 800px; /* Large enough to reveal full text */
+}
+
+/* Also move the container up when intro is shown */
+.show-intro .content {
+  margin-top: 30px;
+}

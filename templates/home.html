@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <title>hello zzh</title>
+    <link rel="icon" href="{% static 'icons/blackhole.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}">
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <p id="first-line">
+          Live A Life You Will Remember.
+        </p>
+        <p id="second-line">
+          <a href="{% url 'aes_posts' %}">Aesthetic</a>.
+          <a href="{% url 'sci_posts' %}">Scientific</a>.
+        </p>
+        
+        <p>
+          <a href="#" class="button" id="about-button">
+            about
+          </a>
+        </p>
+      </div>
+
+      <div id="introduction" class="hidden">
+        <p>
+          Hello! I`m Zihao, a PhD student in Bioinformatics. 
+          I hope the journey of discovery for aesthetics and science can re-ignite your passion for life.
+        </p>
+      </div>
+    </div>
+      
+    <script src="{% static 'js/show_intro.js' %}"></script>
+  </body>
+</html>
